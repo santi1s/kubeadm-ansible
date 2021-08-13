@@ -1,7 +1,6 @@
 ---
 - name: Install containerd runtime
   include_tasks: pkg.yml
-  include_tasks: binaries.yml
 
 - name: "Create a directory for containerd config"
   file: path=/etc/containerd state=directory
