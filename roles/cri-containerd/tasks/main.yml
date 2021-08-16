@@ -25,7 +25,7 @@
 
 - name: "Check kubelet args in kubelet config (Ubuntu)"
   shell: grep "^Environment=\"KUBELET_EXTRA_ARGS=" /etc/systemd/system/kubelet.service.d/10-kubeadm.conf || true
-    register: check_args
+  register: check_args
   when: ansible_distribution == "Ubuntu"
 
 - name: "Add runtime args in kubelet conf (Ubuntu)"

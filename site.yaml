@@ -2,14 +2,13 @@
 - hosts: kube-cluster
   gather_facts: yes
   become: yes
-  roles:
-    - { role: cri-containerd, tags: cri-containerd }
 
 - hosts: master
   gather_facts: yes
   become: yes
   roles:
     - { role: kubernetes/master, tags: master }
+    - { role: cri-containerd, tags: cri-containerd }
     - { role: cni, tags: cni }
 
 - hosts: node1
@@ -17,12 +16,14 @@
   become: yes
   roles:
     - { role: kubernetes/node, tags: node }
+    - { role: cri-containerd, tags: cri-containerd }
 
 - hosts: node2
   gather_facts: yes
   become: yes
   roles:
     - { role: kubernetes/node, tags: node }
+    - { role: cri-containerd, tags: cri-containerd }
 
 - hosts: master
   gather_facts: yes
